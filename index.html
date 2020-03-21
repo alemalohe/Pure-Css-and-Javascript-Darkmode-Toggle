@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700" />
+    <style>
+       :root{
+          --dark: #040408;
+          --dark-color: #1d1f55
+          --light: white;
+          --color: rgb(200, 202, 221);
+       }
+
+       .light{
+            background-color: white;
+            color: var(--dark);
+            font-family: 'Poppins';
+            transition: 0.5s;
+       }
+
+       .dark{
+            background-color: var(--dark);
+            color: var(--color);
+            font-family: 'Poppins';
+            transition: 0.5s;
+       }
+
+       .grid{
+           display: grid;
+           gap: 2rem;
+           grid-template-columns:  repeat(auto-fit, minmax(240px, 2fr));
+           grid-auto-rows: auto;
+       }
+
+       .grid div{
+           width: 100%;
+           text-align: left;
+       }
+
+       .margin{
+           width: 80%;
+           margin-left: auto;
+           margin-right: auto;
+       }
+
+       header{
+           width: 70%;
+           margin-left: auto;
+           margin-right: auto;
+       }
+
+       .mt-3{
+           margin-top: 8%;
+       }
+
+       i{
+           font-size: 20px;
+       }
+
+       h1{
+           font-size: 30px;
+           font-weight: 700;
+           line-height: 34px;
+       }
+
+        @media screen and (min-width: 600px){
+            img{
+                margin-left: 100px;
+            }
+        }
+
+    </style>
+</head>
+<!-- default set to light -->
+<body id="body" class="light">
+
+    <header>
+        <!-- logo -->
+       <svg style="width: 45px; height: 45px; background-color: white;">
+            <path d="M5 40V5h35v35H5zm8.56-12.627c0 .555-.027.687-.318 1.03l-2.457 2.985v.396h6.974v-.396l-2.456-2.985c-.291-.343-.344-.502-.344-1.03V18.42l6.127 13.364h.714l5.256-13.364v10.644c0 .29 0 .342-.185.528l-1.848 1.796v.396h9.19v-.396l-1.822-1.796c-.184-.186-.21-.238-.21-.528V15.937c0-.291.026-.344.21-.528l1.823-1.797v-.396h-6.471l-4.622 11.542-5.203-11.542h-6.79v.396l2.14 2.64c.239.292.291.37.291.768v10.353z"></path>
+       </svg>
+       <!-- dark mode toggler -->
+       <div style="float: right;">
+           <p><i class="fa fa-moon" id="lights"></i></p>
+
+       </div>
+    </header>
+<!-- main section -->
+   <main class="grid">
+       <section class="margin mt-3 grid">
+           <img style="float: left; margin-right: 40px;" src="https://cdn-images-1.medium.com/max/270/1*nWrGDU-2uklo4bLYX697vw.png" alt="">
+           <div>
+               <h1>A place to publish your best work</h1>
+           <p>
+               The internet should reward quality thinking, not clickbait. That’s why we’ve created a better home for writers, journalists and experts. It’s simple to use, free from ads, and connects you to curious, avid readers, so you can focus on what matters: putting your best work out there.
+           </p>
+           </div>
+       </section>
+   </main>
+
+
+<script>
+    var lights = document.querySelector('#lights')
+    var body = document.querySelector('#body')
+   
+    lights.addEventListener('click', ()=>{
+        if (lights.classList.contains('fa-moon')) {
+            lights.classList.remove('fa-moon');
+            lights.classList.add('fa-sun')
+            if(body.classList.contains('light')){
+                body.classList.remove('light')
+                body.classList.add('dark')
+            }
+        } else {
+            lights.classList.remove('fa-sun')
+            lights.classList.add('fa-moon');
+            if(body.classList.contains('dark')) {
+                body.classList.remove('dark')
+                body.classList.add('light')
+            }
+        }
+    })
+</script>
+</body>
+</html>
